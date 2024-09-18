@@ -4,7 +4,8 @@
 
 ## Introduction
 
-This is a tool to help you build a project of academic papers
+This is a tool to help you build a project of academic papers.
+With this tool, you can quickly generate a project for managing your academic papers, including the main files and folders of the paper.
 The project structure is:
 
 ```shell
