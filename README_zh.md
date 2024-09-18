@@ -1,11 +1,13 @@
-# article-project-builder
+# 论文管理项目生成器
 
 [简体中文](README_zh.md)｜[English](README.md)
 
-## Introduction
+## 介绍
 
-This is a tool to help you build a project of academic papers
-The project structure is:
+这是一个用于生成论文管理项目的工具。
+通过该工具，可以快速生成一个论文管理项目，包括论文的主要文件和文件夹。
+
+文件夹结构如下：
 
 ```shell
 <start_time>-<article_title> # The project root folder
