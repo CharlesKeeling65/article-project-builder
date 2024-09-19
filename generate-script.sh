@@ -1,5 +1,4 @@
 #!bin/bash
-# read folder-structure.txt
 
 folder_structure="folder-structure.conf"
 
@@ -16,8 +15,10 @@ read -p "Press y to continue or n to exit: " confirm
 
 if [ "$confirm" == "y" ]; then
     read -p "Enter the folder structure file name, like 'axx-bxx-...': " file_name
-    mkdir -p "$file_name"
+    ymd_time=$(date +"%Y%m%d")
     uppercase=$(echo $file_name | sed 's/-/ /g' | awk '{for(i=1; i<=NF; i++) printf toupper(substr($i,1,1))}')
+    file_name="${ymd_time}-$file_name"
+    mkdir -p "$file_name"
     read -p "Do you want to create File Manuscript_${uppercase}_v1.md? (y/n): " file_a
     if [ "$file_a" == "y" ]; then
         touch "$file_name/Manuscript_${uppercase}_v1.md"
@@ -34,7 +35,7 @@ if [ "$confirm" == "y" ]; then
     echo "Creating folder: $line"
     done < "$folder_structure"
 
-    if [ -d "$file_name/Config" ]; then
+    if [ -d "$file_name/Config" ] && [ "$file_b" == "y" ]; then
         mv "$file_name/custom-reference.docx" "$file_name/Config"
     fi
 
