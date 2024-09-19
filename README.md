@@ -15,7 +15,7 @@ The project structure is:
 ├── Manuscript_<article_title_abbr>_v1.md # The manuscript file version 1
 ├── Manuscript_<article_title_abbr>_v1.pdf # The manuscript file version 1
 ├── Config # The configuration file folder
-│   ├── reference_docx.docx # The md2word reference file
+│   ├── reference.docx # The md2word reference file
 │   ├── ref.bib # The reference bib file
 │   ├── ref_style.csl # The reference style csl file
 ├── Figures # The figures used in the manuscript
@@ -45,6 +45,6 @@ The project structure is:
 ├── ...
 ```
 
-## Development environment
+## Dependencies
 
-## Usage
+- Docker
