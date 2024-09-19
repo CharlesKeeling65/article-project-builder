@@ -12,6 +12,12 @@ The project structure is:
 ```shell
 <start_time>-<article_title> # The project root folder
 ├── Manuscript_<article_title_abbr>_v1.docx # The manuscript file version 1
+├── Manuscript_<article_title_abbr>_v1.md # The manuscript file version 1
+├── Manuscript_<article_title_abbr>_v1.pdf # The manuscript file version 1
+├── Config # The configuration file folder
+│   ├── reference_docx.docx # The md2word reference file
+│   ├── ref.bib # The reference bib file
+│   ├── ref_style.csl # The reference style csl file
 ├── Figures # The figures used in the manuscript
 │   ├── Fig-1.png # Figure 1 in the manuscript
 │   ├── ED-Fig-1.png # Figure 1 in the Extended Data Figure
