@@ -15,9 +15,7 @@ This is the abstract.
 
 **Keywords:** keyword1;keyword2;keyword3;keyword4;keyword5
 
-<div STYLE="page-break-after: always;"></div>
-
-# Introduction
+# Main
 
 This is the introduction.
 
