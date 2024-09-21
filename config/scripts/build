@@ -1,0 +1,8 @@
+
+ARCH=$(uname -m)
+
+if [ "$ARCH" == "x86_64" ]; then
+    alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/core'
+else
+    alias pandock='docker run --platform=linux/x86_64 --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/core'
+fi
