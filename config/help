@@ -1,0 +1,6 @@
+usage: ./article-build [action] [args]
+
+optional arguments:
+    help                            Show this help message and exit
+    init                            Initialize a new article project
+    build <filename>.md             Build docx file from markdown by pandoc

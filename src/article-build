@@ -1,0 +1,69 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(dirname "$(readlink -f "$_")")
+CONFIG_DIR="$SCRIPT_DIR/../config"
+TEMPLATE_DIR="$CONFIG_DIR/template"
+
+ARCH=$(uname -m)
+
+if [ "$ARCH" == "x86_64" ]; then
+    alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/core'
+else
+    alias pandock='docker run --platform=linux/x86_64 --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/core'
+fi
+
+case $1 in
+    "init")
+        echo -e "Do you want to create project in this folder/path?\n$(pwd)"
+        read -p "Press y to continue or n to exit: " confirm
+
+        if [ "$confirm" == "y" ]; then
+            read -p "Enter the folder structure file name, like 'axx-bxx-...': " file_name
+            ymd_time=$(date +"%Y%m%d")
+            uppercase=$(echo $file_name | sed 's/-/ /g' | awk '{for(i=1; i<=NF; i++) printf toupper(substr($i,1,1))}')
+            file_name="${ymd_time}-$file_name"
+            mkdir -p "$file_name"
+            read -p "Do you want to create File Manuscript_${uppercase}_v1.md from default template? (y/n): " file_a
+            if [ "$file_a" == "y" ]; then
+                cp "$TEMPLATE_DIR/default-manuscript.md" "$file_name/Manuscript_${uppercase}_v1.md"
+                echo "Creating file: File Manuscript_${uppercase}_v1.md from default template"
+            fi
+            read -p "Do you want to create a custom-reference.docx file from default template? (y/n): " file_b
+            if [ "$file_b" == "y" ]; then
+                cp "$TEMPLATE_DIR/default-ref-docx.docx" "$file_name/reference-docx.docx"
+                echo "Creating file: reference-docx.docx"
+            else
+                pandock -o "$file_name/reference-docx.docx" --print-default-data-file reference.docx
+                echo "Creating file: reference-docx.docx from pandoc"
+            fi
+            while IFS= read -r line
+            do
+            mkdir -p "$file_name/$line"
+            echo "Creating folder: $line"
+            done < "$CONFIG_DIR/folder-structure.conf"
+
+            if [ -d "$file_name/Config" ] && [ "$file_b" == "y" ]; then
+                mv "$file_name/reference-docx.docx" "$file_name/Config"
+            fi
+
+            exit 0
+        else
+            echo "Exiting..."
+            exit 1
+        fi
+        ;;
+    "build")
+        if [ $# -lt 2 ]; then
+        echo "Invalid argument, use 'help' to see available options"
+        else
+        FILENAME=$(basename $2 .md)
+        pandock --defaults=$CONFIG_DIR/pandoc.yaml $1 -o "$FILENAME.docx"
+        fi
+        ;;
+    "help")
+        cat $CONFIG_DIR/help
+        ;;
+    *)
+        echo "Invalid argument, use 'help' to see available options"
+        ;;
+esac

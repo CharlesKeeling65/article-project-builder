@@ -1,0 +1,27 @@
+# 路径相对于 pandoc 可执行文件的当前工作目录
+# 为了与 Markdown Preview Enhanced 相配合（通过 stdout）不配置输入输出文件
+# input-files:
+# output:
+
+filters:
+  - pandoc-crossref
+  - pandoc-citeproc
+
+reference-doc:
+  - Config/custom-reference.docx
+
+html-math-method:
+  method: katex
+  url: 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'
+
+metadata:
+  bibliography: Config/references.bib
+  csl: Config/references.csl
+  reference-section-title: References
+  # 配置 pandoc-crossref 引用显示前缀
+  figPrefix: 'Figure'
+  tblPrefix: 'Table'
+  eqnPrefix: 'Equation'
+  # 配置 pandoc-crossref 项目标题前缀
+  figureTitle: 'Figure'
+  tableTitle: 'Table'
