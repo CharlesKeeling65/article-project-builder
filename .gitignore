@@ -2,3 +2,4 @@
 *.code-workspace
 test/
 .config
+build/*
