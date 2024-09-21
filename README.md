@@ -45,6 +45,72 @@ The project structure is:
 ├── ...
 ```
 
-## Dependencies
+## Usage
+
+dependencies:
 
 - Docker
+
+### Step 1: Download Docker and pull the image
+
+```shell
+docker pull pandoc/core:latest
+```
+
+The image provides the pandoc environment.
+
+### Step 2: unzip tar.gz file and configure path
+
+```shell
+mkdir article-project-builder && tar -zxvf article-build_v1.0.tar.gz -C article-project-builder/
+cd article-project-builder/bin && pwd
+```
+
+You will get the path of the bin folder, such as `/home/username/article-project-builder/bin`.
+
+```shell
+vim ~/.bashrc
+```
+
+Add the following content to the end of the file: `export PATH=/home/username/article-project-builder/bin:$PATH` and save it.
+
+Source the bashrc file:
+
+```shell
+source ~/.bashrc
+```
+
+### Step 3: Build a project
+
+initializing the framework:
+
+```shell
+article-build init
+```
+
+converting markdown files to word files
+
+```shell
+article-build build
+```
+
+help:
+
+```shell
+article-build help
+```
+
+## Build
+
+dependencies:
+
+- Docker
+- shc
+
+```
+
+```
+
+```
+
+```
