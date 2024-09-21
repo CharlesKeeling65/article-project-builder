@@ -7,6 +7,8 @@
 This is a tool to help you build a project of academic papers.
 With this tool, you can quickly generate a project for managing your academic papers, including the main files and folders of the paper.
 
+And you can use the tool to convert the markdown file to the word file.
+
 The project structure is:
 
 ```shell
@@ -106,11 +108,3 @@ dependencies:
 
 - Docker
 - shc
-
-```
-
-```
-
-```
-
-```
