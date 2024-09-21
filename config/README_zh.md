@@ -1,6 +1,6 @@
 # 论文管理项目生成器
 
-[简体中文](README_zh.md)｜[English](README.md)
+[简体中文](README_zh.md)｜[English](../README.md)
 
 ## 介绍
 

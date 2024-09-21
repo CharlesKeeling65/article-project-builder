@@ -1,6 +1,6 @@
 # article-project-builder
 
-[简体中文](README_zh.md)｜[English](README.md)
+[简体中文](config/README_zh.md)｜[English](README.md)
 
 ## Introduction
 
